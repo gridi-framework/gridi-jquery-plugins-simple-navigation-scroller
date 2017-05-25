@@ -18,7 +18,7 @@
         }, options);
 
         if($.type(settings.elements.targetElement) === 'string' || $.type(settings.elements.targetElement) === 'object') {
-            targetElement = $(targetElement);
+            targetElement = $(settings.elements.targetElement);
         } else {
             attributeForFindTargetElement = simpleNavScrollerElement.attr(settings.attributeForFindTargetElement);
 
