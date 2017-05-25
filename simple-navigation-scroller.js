@@ -4,7 +4,7 @@
     var SimpleNavScroller = function(element, options) {
         var htmlBodyElement = $('html, body');
         var simpleNavScrollerElement = $(element);
-        var targetElement;
+        var targetElement, attributeForFindTargetElement;
 
         var settings = $.extend(true, {
             attributeForFindTargetElement: 'href',
@@ -24,12 +24,11 @@
 
             if ( attributeForFindTargetElement !== null && attributeForFindTargetElement !== '' ) {
                 attributeForFindTargetElement = attributeForFindTargetElement.replace( /^#/, '' );
+                targetElement = $('[' + settings.targetElementAttribute + '="' + attributeForFindTargetElement + '"]');
             }
-
-            targetElement = $('[' + settings.targetElementAttribute + '="' + attributeForFindTargetElement + '"]');
         }
 
-        if(targetElement.length > 0) {
+        if($.type(targetElement) === 'object' && targetElement.length > 0) {
             targetElement = targetElement.first();
             simpleNavScrollerElement.on('click', eventScroll);
 
